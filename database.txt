@@ -1,0 +1,8 @@
++----------+-----------+
+| keyword  | details   |
++----------+-----------+
+| teacher  | cmpe      |
+| class    | cmpe1     |
+| class    | cmpe2     |
+| Lecturer | SithuAung |
++----------+-----------+
