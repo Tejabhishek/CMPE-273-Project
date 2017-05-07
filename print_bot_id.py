@@ -1,8 +1,8 @@
-import os
+
 from slackclient import SlackClient
+import os
 
-
-BOT_NAME = 'starterbot'
+BOT_NAME = 'starterbot-a'
 
 slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
 
