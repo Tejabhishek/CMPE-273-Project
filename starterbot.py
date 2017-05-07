@@ -31,16 +31,38 @@ def handle_command(command, channel):
         are valid commands. If so, then acts on the commands. If not,
         returns back what it needs for clarification.
     """
-
-    if (command == "teacher"):
+    
+    
+    if "teacher" in command:
+       
         cur.execute("SELECT * FROM grammar1 where keyword = 'teacher'")
         for row in cur.fetchall():
             response = row[1]
-    elif (command == "class"):
-        cur.execute("SELECT * FROM grammar1 where keyword = 'class'")
+    elif "lecturer" in command:
+       
+        cur.execute("SELECT * FROM grammar1 where keyword = 'lecturer'")
         for row in cur.fetchall():
-            response = row[1]
+        	response = row[1]
+        
+    elif "professor" in command:
+       
+        cur.execute("SELECT * FROM grammar1 where keyword = 'professor'")
+        for row in cur.fetchall():
+        	response = row[1]
+    elif "guide" in command:
+       
+        cur.execute("SELECT * FROM grammar1 where keyword = 'guide'")
+        for row in cur.fetchall():
+        	response = row[1]
+    elif (command == "hi"):
+        response = "Hi!!  How are you!!"
+    
+    elif (command == "i am good"):
+        response = "Cheers!!  How can I help you"
+    elif (command == "how are you"):
+        response = "I am fine! How can I help you"
     else:
+        print("feefeg")
         response = "Not sure what you mean. Use the *" + EXAMPLE_COMMAND + \
                    "* command with numbers, delimited by spaces."
     slack_client.api_call("chat.postMessage", channel=channel,
