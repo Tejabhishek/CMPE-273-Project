@@ -17,7 +17,7 @@ for i in list:
 
 if command in final1[0] or command in final1[1] or final1[2] or command in final1[3]  or command in final1[4] :
 
- print "sucess"
+ print "success"
 
 
 
