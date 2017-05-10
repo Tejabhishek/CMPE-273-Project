@@ -1,0 +1,46 @@
+from nltk import ne_chunk, pos_tag, word_tokenize
+from nltk.tree import Tree
+text= "When is the CMPE-273 final exam?"
+
+
+
+def get_continuous_chunks(text):
+    chunked = ne_chunk(pos_tag(word_tokenize(text)))
+    prev = None
+    continuous_chunk = []
+    current_chunk = []
+    
+    for i in chunked:
+        if type(i) == Tree:
+            current_chunk.append(" ".join([token for token, pos in i.leaves()]))
+        elif current_chunk:
+            named_entity = " ".join(current_chunk)
+            if named_entity not in continuous_chunk:
+                continuous_chunk.append(named_entity)
+                current_chunk = []
+        else:
+            continue
+    return continuous_chunk
+def extract_candidate_chunks(text, grammar=r'KT: {(<JJ>* <NN.*>+ <IN>)? <JJ>* <NN.*>+}'):
+    # exclude candidates that are stop words or entirely punctuation
+    punct = set(string.punctuation)
+    stop_words = set(nltk.corpus.stopwords.words('english'))
+    # tokenize, POS-tag, and chunk using regular expressions
+    chunker = nltk.chunk.regexp.RegexpParser(grammar)
+    tagged_sents = nltk.pos_tag_sents(nltk.word_tokenize(sent) for sent in nltk.sent_tokenize(text))
+    all_chunks = list(itertools.chain.from_iterable(nltk.chunk.tree2conlltags(chunker.parse(tagged_sent))
+                                                    for tagged_sent in tagged_sents))
+    # join constituent chunk words into a single chunked phrase
+    candidates = [' '.join(word for word, pos, chunk in group).lower()
+                  for key, group in itertools.groupby(all_chunks, lambda (word,pos,chunk): chunk != 'O') if key]
+    return [cand for cand in candidates if cand not in stop_words and not all(char in punct for char in cand)]
+
+
+if __name__ == "__main__":
+    my_sent = "WASHINGTON -- In the wake of a string of abuses by New York police officers in the 1990s, Loretta E. Lynch, the top federal prosecutor in Brooklyn, spoke forcefully about the pain of a broken trust that African-Americans felt and said the responsibility for repairing generations of miscommunication and mistrust fell to law enforcement."
+    my_sent = my_sent.lower()
+
+    doc = "this string contains entities. whether obama is an entity or a lamp is an entity?"
+    doc = "When is the CMPE-273 final exam and who is the mentor?"
+    doc = doc.lower()
+    print extract_candidate_words(doc)
