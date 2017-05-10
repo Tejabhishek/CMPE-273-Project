@@ -1,0 +1,63 @@
+create database chatbot;
+
+create table solutions (questions text, answers varchar(255)); 
+
+
+ 
+
+insert into solutions (questions, answers) values ("professor, lecturer, instructor, teacher", "Prof. Sithu Aung");
+
+insert into solutions (questions, answers) values ("Subject, class, course,", "CMPE 273");
+
+ insert into solutions (questions, answers) values ("email,mail,mail id, email id", "sithu.aung@sjsu.edu");
+
+ insert into solutions (questions, answers) values ("office, office location,office room", "ENG 281");
+
+insert into solutions (questions, answers) values ("hours, meeting", "Wednesday 5-6PM");
+
+insert into solutions (questions, answers) values ("Class timings, Class,lecture hall", " WSH 100 Wednesday 6-8:45PM");
+
+
+insert into solutions (questions, answers) values ("Course website, website,course link", "  https://sjsu.instructure.com");
+
+
+insert into solutions (questions, answers) values ("Course website, website,course link", "  •Web Services, by Gustavo Alonso, Fabio Casati, Harumi Kuno and Vijay Machiraju (2003)");
+
+insert into solutions (questions, answers) values ("department,division", " Computer Engineering" );
+
+ insert into solutions (questions, answers) values ("Pop Quizzes weightage", " 5%" );
+
+
+ insert into solutions (questions, answers) values ("Labs weightage", " 5%" );
+
+insert into solutions (questions, answers) values ("Assignments weightage", " 30%" );
+
+insert into solutions (questions, answers) values ("Project weightage", " 20%" );
+
+insert into solutions (questions, answers) values ("midterm exam, mid weightage", " 20%" );
+
+
+insert into solutions (questions, answers) values ("final exam weightage", " 20%" );
+
+
+
+
+
+ insert into solutions (questions, answers) values ("grading,grading system, grade", " curved" );
+
+  insert into solutions (questions, answers) values ("final exam, final exam date", " 24th, May, 2017" );
+
+
+
+insert into solutions (questions, answers) values ("mid term exam, mid term exam date", " 5th, April, 2017" );
+
+
+
+insert into solutions (questions, answers) values ("Hi, How are You, Hello, Hi There, Hey ,Hi, How are you, whats up?, Greetings,Good Evening, G’day, Hello", " Hi! My name is Alice and I am feeling happy today. How may I assist you?" );
+	
+insert into solutions (questions, answers) values ("Help, I am good, Need Assistance", "  How can I help you?" );
+
+
+
+
+
