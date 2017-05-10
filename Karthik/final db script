@@ -1,5 +1,5 @@
 create database chatbot;
-
+use chatbot;
 create table solutions (questions text, answers varchar(255)); 
 
 
