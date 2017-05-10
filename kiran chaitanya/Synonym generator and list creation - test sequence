@@ -1,0 +1,27 @@
+from PyDictionary import PyDictionary
+dictionary=PyDictionary()
+z= ['professor','assistant','lecturer','tutor']
+final1=[]
+
+command='mentor'
+
+for i in z:
+ list1=dictionary.synonym(i)
+ list1 = [str(i).strip() for i in list1]
+
+ final1.append(list1) 
+ for i in final1:
+		print i
+		for j in i:
+			if j in command:
+				print j
+				if command in final1[0] or command in final1[1] or final1[2] or command in final1[3]  or command in final1[4] :
+						
+					print "success"
+						
+						
+				else:
+					response = ""
+			else:
+					response = ""
+			
