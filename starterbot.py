@@ -1,12 +1,18 @@
 import os
 import time
+import unicodedata    
+import random
 import pymysql
 from slackclient import SlackClient
+from PyDictionary import PyDictionary
+dictionary=PyDictionary()
+
+
 
 db = pymysql.connect(host="localhost",
                      user="root",
                      passwd="kc",
-                     db="kiran")
+                     db="chatbot")
 
 
 cur = db.cursor()
@@ -23,51 +29,47 @@ EXAMPLE_COMMAND = "do"
 # instantiate Slack & Twilio clients
 slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
 
+cur.execute("SELECT * FROM solutions where questions like '%teacher%'")
+for row in cur.fetchall():
+	m = row[0]
+
+
+z= ['professor','assistant','lecturer','tutor']
+final1=[]
+
+for i in z:
+ list1=dictionary.synonym(i)
+ list1 = [str(i).strip() for i in list1]
+
+ final1.append(list1)
+
+
+
 
 
 def handle_command(command, channel):
-    """
-        Receives commands directed at the bot and determines if they
-        are valid commands. If so, then acts on the commands. If not,
-        returns back what it needs for clarification.
-    """
-    
-    
-    if "teacher" in command:
-       
-        cur.execute("SELECT * FROM grammar1 where keyword = 'teacher'")
-        for row in cur.fetchall():
-            response = row[1]
-    elif "lecturer" in command:
-       
-        cur.execute("SELECT * FROM grammar1 where keyword = 'lecturer'")
-        for row in cur.fetchall():
-        	response = row[1]
-        
-    elif "professor" in command:
-       
-        cur.execute("SELECT * FROM grammar1 where keyword = 'professor'")
-        for row in cur.fetchall():
-        	response = row[1]
-    elif "guide" in command:
-       
-        cur.execute("SELECT * FROM grammar1 where keyword = 'guide'")
-        for row in cur.fetchall():
-        	response = row[1]
-    elif (command == "hi"):
-        response = "Hi!!  How are you!!"
-    
-    elif (command == "i am good"):
-        response = "Cheers!!  How can I help you"
-    elif (command == "how are you"):
-        response = "I am fine! How can I help you"
-    else:
-        print("feefeg")
-        response = "Not sure what you mean. Use the *" + EXAMPLE_COMMAND + \
+	print "dddddd"
+	print m
+	print "yoyoo"
+	print final1
+	print"feeeeeeeeeeeeeee"
+	for i in final1:
+		print i
+		for j in i:
+			if j in command:
+				print j
+				if command in final1[0] or command in final1[1] or final1[2] or command in final1[3]  or command in final1[4] :
+					cur.execute("SELECT * FROM solutions where questions like '%teacher%'")
+					for row in cur.fetchall():
+						response = row[1]
+						
+						
+				else:
+					response = "Not sure what you mean. Use the *" + EXAMPLE_COMMAND + \
                    "* command with numbers, delimited by spaces."
-    slack_client.api_call("chat.postMessage", channel=channel,
-                          text=response, as_user=True)
-
+			else:
+				response = ""
+				slack_client.api_call("chat.postMessage", channel=channel,text=response, as_user=True)
 
 def parse_slack_output(slack_rtm_output):
     """
