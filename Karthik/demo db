@@ -1,0 +1,96 @@
+create database chatbot1;
+
+ 
+
+ 
+create table solutions (questions text, answers varchar(255)); 
+
+ 
+ 
+ 
+
+ 
+insert into solutions (questions, answers) values ("professor, lecturer, instructor, teacher", "Your professor name is Sithu Aung");
+
+ 
+insert into solutions (questions, answers) values ("Subject, class, course,", "your subject name is CMPE 273- Enterprise Distributed Systems for the spring 2017");
+
+ 
+ insert into solutions (questions, answers) values ("email,mail,mail id, email id", "Professor Sithu Aung email Id is sithu.aung@sjsu.edu");
+
+ 
+ insert into solutions (questions, answers) values ("office, office location,office room", "Your office room number is ENG 281");
+
+ 
+insert into solutions (questions, answers) values ("hours, meeting", "Hours hours are on Wednesday from 5-6PM");
+
+ 
+insert into solutions (questions, answers) values ("Class timings, Class,lecture hall", " Location is WSH 100  and timing - Wednesday 6-8:45PM");
+
+ 
+
+ 
+insert into solutions (questions, answers) values ("Course website, website,course link", "  Link is https://sjsu.instructure.com");
+
+ 
+ 
+insert into solutions (questions, answers) values ("department,division", "Your department name - Computer Engineering" );
+
+ 
+ insert into solutions (questions, answers) values ("Pop Quizzes weightage", " 5%" );
+
+ 
+
+ 
+ insert into solutions (questions, answers) values ("Labs weightage", " 5%" );
+
+ 
+insert into solutions (questions, answers) values ("Assignments weightage", " 30%" );
+
+ 
+insert into solutions (questions, answers) values ("Project weightage", " 20%" );
+
+ 
+insert into solutions (questions, answers) values ("midterm exam, mid weightage", " 20%" );
+
+ 
+
+ 
+insert into solutions (questions, answers) values ("final exam weightage", " 20%" );
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ insert into solutions (questions, answers) values ("grading,grading system, grade", " Grading system is curved" );
+
+ 
+
+  insert into solutions (questions, answers) values ("final, final exam date", " your mid exam is on 24th, May, 2017 at five thirty PM" );
+
+ 
+
+ 
+
+ 
+insert into solutions (questions, answers) values ("mid term exam, mid term exam date", " your mid exam is on 5th, April, 2017" );
+
+ 
+
+ 
+
+ 
+insert into solutions (questions, answers) values ("Hi, How are You, Hello, Hi There, Hey ,Hi, How are you, whats up?, Greetings,Good Evening, G’day, Hello", " Hi! My name is Alice and I am feeling happy today. How may I assist you?" );
+
+                                                                       
+
+insert into solutions (questions, answers) values ("Help, I am good, Need Assistance", "  How can I help you?" );
+
+ 
+
+insert into solutions (questions, answers) values ("Help, I am good, Need Assistance", "  How can I help you?" );
